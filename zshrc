@@ -1,5 +1,5 @@
 # Plugins
-source $HOME/.config/zplug/init.zsh
+source $HOME/.config/zplug
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
 
 zstyle ':prezto:module:*' color 'yes'

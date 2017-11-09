@@ -6,9 +6,6 @@
   ~/.zshrc:
     force: true
     path: zshrc
-  ~/.config/zplug:
-    create: true
-    path: zplug
   ~/.tmux.conf:
     force: true
     path: tmux/tmux.conf
@@ -24,4 +21,7 @@
   ~/.xinitrc:
     force: true
     path: xinitrc
-- shell: []
+- shell:
+  - sudo pacman -S fasd fzf neovim neomutt tmux
+  - sudo pacman -S python-neovim python2-neovim
+  - git clone https://github.com/zplug/zplug $HOME/.config/zplug

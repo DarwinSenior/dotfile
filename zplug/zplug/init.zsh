@@ -1,1 +1,0 @@
-/home/darwinsenior/.zplug/repos/zplug/zplug/init.zsh

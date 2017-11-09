@@ -1,0 +1,17 @@
+background no
+out_to_x no
+out_to_console yes
+update_interval 0.5
+total_run_times 0
+use_spacer none
+
+
+#   ↑${downspeed wlp3s0}|↓${upspeed wlp3s0}  \
+TEXT
+  ${exec sh $HOME/.config/i3/conky/spotify-nowplaying}   \
+  ${wireless_link_qual_perc wlp3s0}  ${wireless_essid wlp3s0}     \
+  ${exec amixer get Master -M | grep -oE -m1 "[[:digit:]]*%"}   \
+  ${battery_percent BAT0}%   \
+  ${time %a %b %d} \
+  ${time %H:%M}
+
