@@ -59,14 +59,5 @@ export PAGER='less'
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-export GTAGSLABEL=pygments
-
 # use pure theme
 bindkey '^ ' autosuggest-accept
-
-
-###-tns-completion-start-###
-if [ -f /Users/darwinsenior/.tnsrc ]; then
-    source /Users/darwinsenior/.tnsrc
-fi
-###-tns-completion-end-###

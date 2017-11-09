@@ -1,0 +1,183 @@
+global !p
+def filename():
+	return vim.eval("expand('%:t')")
+
+def strippedName(x):
+	return filename().replace('.%s.ts'%x, '')
+
+def underscore2capital(text):
+	return ''.join([x.capitalize() for x in text.split('_')])
+
+def dash2capital(text):
+	return ''.join([x.capitalize() for x in text.split('-')])
+
+def dash2camel(text):
+	parts = text.split()
+	return parts[0]+''.join([x.capitalize() for x in parts[1:]])
+
+def name2something(seperator, joiner):
+	pass
+endglobal
+
+snippet mgm "mongo model" b
+import {Schema, createConnection, Document} from 'mongoose'
+import { db } from './${3:db}';
+
+const ${1:`!p snip.rv = filename().replace('.ts', '').capitalize()`}Schema = new Schema({
+	`!p
+lines = t[2].split('\n')
+def totype(x):
+	if x in ['string', 'number', 'boolean']:
+		return x.capitalize()
+	elif x.endswith('[]'): return 'Array'
+	elif x[0] == '{' and x[-1] == '}': return 'Object'
+	else: return x
+def translate(line):
+	match = re.match(r'(\S+)\s*:\s*(\S+);?', line)
+	if match:
+		return '%s: {type: %s}'%(match.group(1), totype(match.group(2)))
+	else: return ''
+snip.rv = '\n'.join(map(translate, lines))
+	`
+})
+
+export const $1Model = db.model('`!p snip.rv = t[1].lower()`', $1Schema);
+export interface $1 extends Document {
+	${2}
+}
+
+endsnippet
+
+snippet ngcomponent "ng component" b
+import \{
+  Component,
+  ViewChild, ViewChildren, ElementRef,
+  ContentChild, ContentChildren,
+  Input, Output, EventEmitter,
+} from '@angular/core';
+
+@Component({
+  selector: '`!p snip.rv=strippedName('component')`',
+  template: './`!p snip.rv=strippedName('component')`.component.html',
+})
+export class `!p snip.rv=dash2capital(strippedName('component'))`Component {
+  constructor() {
+
+  }
+}
+endsnippet
+
+snippet ngpage "ng page" b
+import \{
+  Component,
+  HostBinding,
+\} from '@angular/core'
+
+@Component({
+  selector: 'page-`!p snip.rv=strippedName('page')`',
+  templateUrl: '`!p snip.rv=strippedName('page')`.page.html',
+  moduleId: module.id,
+})
+export class `!p snip.rv=dash2capital(strippedName('page'))`Page {
+  constructor() {}
+}
+endsnippet
+
+snippet ngunit "ng unit" b
+import \{
+  Component,
+  Input, Output, EventEmitter,
+\} from '@angular/core'
+
+@Component({
+  selector: '`!p snip.rv=strippedName('unit')`',
+  templateUrl: '`!p snip.rv=strippedName('unit')`.unit.html',
+  moduleId: module.id,
+})
+export class `!p snip.rv=dash2capital(strippedName('unit'))`Unit {
+  constructor() {}
+}
+endsnippet
+
+snippet ngwidget "ng widget" b
+import \{
+  Component,
+  Input, Output, EventEmitter,
+  ViewChild, ViewChildren, ContentChild,
+  ContentChildren, ElementRef,
+\} from '@angular/core'
+
+@Component({
+  selector: '`!p snip.rv=strippedName('widget')`',
+  templateUrl: '`!p snip.rv=strippedName('widget')`.widget.html',
+  moduleId: module.id,
+})
+export class `!p snip.rv=dash2capital(strippedName('widget'))`Widget {
+  constructor() {}
+}
+endsnippet
+
+snippet ngpipe "ng pipe" b
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({name: '`!p snip.rv = dash2camel(strippedName('pipe'))`'})
+export class `!p snip.rv = dash2capital(strippedName('pipe'))`Pipe implements PipeTransform {
+  transform(value: ${1:any}) {
+    ${2:return value}
+  }
+}
+endsnippet
+
+snippet ngservice "ng service" b
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
+
+@Injectable()
+export class `!p snip.rv = dash2capital(strippedName('service'))`Service {
+
+  constructor() {
+    ${0}
+  }
+}
+endsnippet
+
+snippet nganimation "ng animation" b
+import { query, style, animate, trigger, transition, stagger } from '@angular/animations';
+
+export const `!p snip.rv = dash2capital(strippedName('animation'))`Animation = trigger(`!p snip.rv = strippedName('animation')`, [
+  ${1:transition(':enter', [
+	${2}
+  ]),}
+  ${0}
+]);
+endsnippet
+
+snippet ngdirective "ng directive" b
+import {
+  Directive, HostBinding, HostListener,
+  Input, Output, EventEmitter,
+} from '@angular/core';
+
+@Directive({
+  selector: '[`!p snip.rv = strippedName('directive')`]',
+})
+export class `!p snip.rv = dash2capital(strippedName('directive'))`Directive {
+	constructor() {}
+}
+endsnippet
+
+snippet nuxtstore "nuxt vuex store" b
+export interface `!p snip.rv=underscore2capital(filename().replace('.ts', ''))` {
+
+}
+
+export const state = () => ({});
+
+export const getters = {};
+
+export const actions = {};
+
+export const mutations = {};
+endsnippet
+
+extends html, javascript

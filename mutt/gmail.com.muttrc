@@ -1,0 +1,17 @@
+set from = "darwinsenior@gmail.com"
+set imap_user = "darwinsenior@gmail.com"
+set imap_pass = "QSXdr!@#45"
+set folder = ""
+set spoolfile = "+INBOX"
+set imap_check_subscribed
+set mask = ".*"
+set record = "sent-mail"
+set postponed = "Drafts"
+
+set smtp_url = "smtp://darwisenior@smtp.gmail.com:587/"
+set smtp_pass = "QSXdr!@#45"
+set postponed = "Drafts"
+set header_cache=~/.cache/mutt/header.gmail.com
+
+
+

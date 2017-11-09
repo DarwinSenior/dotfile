@@ -15,4 +15,13 @@
   ~/.config/tmux:
     create: true
     path: tmux
+  ~/.ssh/config:
+    force: true
+    path: ssh/config
+  ~/.config/i3:
+    create: true
+    path: i3
+  ~/.xinitrc:
+    force: true
+    path: xinitrc
 - shell: []

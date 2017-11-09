@@ -1,0 +1,14 @@
+set from = "dy276@cam.ac.uk"
+set realname = "Dingcheng Yue"
+
+set imap_user = "dy276"
+set imap_pass = ""
+set folder = "imaps://imap.hermes.cam.ac.uk"
+set spoolfile = "+INBOX"
+set imap_check_subscribed
+set mask = ".*"
+set record = "sent-mail"
+set postponed = "Drafts"
+set smtp_url = "smtp://dy276@smtp.hermes.cam.ac.uk"
+set smtp_pass = $imap_pass
+set header_cache=~/.cache/mutt/header.cam.ac.uk

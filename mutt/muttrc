@@ -1,0 +1,36 @@
+source ./keys.muttrc
+source ./moonshine.muttrc
+# source ./mutt-colors-solarized-dark-256.muttrc
+# source ./cam.ac.uk.muttrc
+source ./gmail.com.muttrc
+set sort = 'reverse-date'
+set editor = nvim
+set timeout = 5
+set mailcap_path = ~/.config/mutt/mailcap
+set date_format="%d/%m %I:%M"
+
+macro index g1 "<sync-mailbox><center-command>source ./cam.ac.uk.muttrc<enter><change-folder>!<enter>"
+macro index g2 "<sync-mailbox><center-command>source ./gmail.com.muttrc<enter><change-folder>!<enter>"
+
+set imap_keepalive = 300
+set imap_check_subscribed = yes
+set imap_idle = yes
+set mail_check = 60
+unset imap_passive
+
+set ssl_starttls = yes
+set ssl_force_tls = yes
+set ssl_usesystemcerts
+
+set sidebar_visible = yes
+set sidebar_width = 30
+set sidebar_folder_indent = yes
+set sidebar_sort_method = alpha
+set sidebar_short_path = yes
+set sidebar_divider_char = " | "
+
+set hostname= tardis
+
+# sanely handle multi-part messages
+auto_view text/html
+alternative_order text/html text/plain

@@ -1,0 +1,7 @@
+image/*; "feh" %s;
+
+application/pdf; mupdf %s; test=test -n "$DISPLAY"
+application/x-pdf; mupdf %s; test=test -n "$DISPLAY"
+
+text/html; w3m -I %{charset} -T text/html ; copiousoutput;
+text/*; nvim %s

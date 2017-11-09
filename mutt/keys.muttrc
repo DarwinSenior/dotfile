@@ -1,0 +1,76 @@
+# unbind everything first
+bind generic,index,pager g noop
+bind generic,index,pager m noop
+bind generic,index,pager z noop
+
+bind generic,index gg first-entry
+bind generic,index G last-entry
+bind pager gg top
+bind pager G bottom
+bind generic,index,pager d half-down
+bind generic,index,pager u half-up
+bind generic,index,pager { half-down
+bind generic,index,pager } half-up
+bind generic,index,pager q exit
+bind generic zz current-middle
+bind generic zb current-bottom
+bind generic zt current-top
+macro generic,index,pager Q qqq
+bind generic,index <up> previous-entry
+bind generic,index <down> next-entry
+bind generic,index j next-entry
+bind generic,index k previous-entry
+bind generic,index <return> display-message
+bind index,pager N search-opposite
+bind index,pager n search-next
+bind index,pager / search
+bind index,pager r reply
+bind index,pager x delete-message
+bind index,pager X undelete-message
+
+bind index,pager <C-n> next-unread
+bind index,pager <C-p> previous-unread
+bind index t tag-entry
+bind index,pager v view-attachments
+
+macro index,pager gi "<change-folder>=INBOX<return>" "open inbox"
+macro index,pager ga "<change-folder>=Archive<return>" "open archive"
+macro index,pager gd "<change-folder>=Drafts<return>" "open drafts"
+macro index,pager gs "<change-folder>=Sent<return>" "open sent"
+macro index,pager gt "<change-folder>$trash<return>" "open trash"
+macro index,pager gf "<change-folder>?" "open mailbox"
+macro index,pager mi "<save-message>=INBOX<return><return>" "move to inbox"
+macro index,pager ma "<save-message>=Archive<return><return>" "move to archive"
+macro index,pager md "<save-message>=Drafts<return><return>" "move to drafts"
+macro index,pager mt "<save-message>$trash<return><return>" "move to trash"
+macro index,pager mf "<save-message>?" "move to mailbox"
+macro index,pager s sync-mailbox
+
+macro pager <C-b> <pipe-entry>'w3m'<enter>
+
+bind generic,index 1 jump
+bind generic,index 2 jump
+bind generic,index 3 jump
+bind generic,index 4 jump
+bind generic,index 5 jump
+bind generic,index 6 jump
+bind generic,index 7 jump
+bind generic,index 8 jump
+bind generic,index 9 jump
+
+bind index W clear-flag
+bind index w set-flag
+bind index x delete-message
+bind index X undelete-message
+bind index s save-message
+
+bind index @ display-address
+set mark_old = no
+
+bind editor <up> history-up
+bind editor <down> history-down
+bind editor <tab> complete-query
+bind editor <left> backward-char
+bind editor <right> forward-char
+bind editor <c-left> backward-word
+bind editor <c-right> forward-word
