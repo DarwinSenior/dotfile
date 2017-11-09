@@ -472,6 +472,6 @@ endfunction
 " let oceanic_next_terminal_italic = 1
 set background=dark
 let g:one_allow_italics = 1
-colorscheme one
+silent colorscheme one
 autocmd BufNewFile,BufRead *.muttrc setfiletype muttrc
 autocmd BufNewFile,BufRead Guardfile setfiletype ruby
