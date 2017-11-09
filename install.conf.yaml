@@ -1,3 +1,18 @@
 - clean: []
-- link: {}
+- link:
+  ~/.config/nvim:
+    create: true
+    path: nvim
+  ~/.zshrc:
+    force: true
+    path: zshrc
+  ~/.config/zplug:
+    create: true
+    path: zplug
+  ~/.tmux.conf:
+    force: true
+    path: tmux/tmux.conf
+  ~/.config/tmux:
+    create: true
+    path: tmux
 - shell: []
